@@ -1,0 +1,113 @@
+<%- include('partials/_header.ejs') %>
+       
+        
+<%- include ('partials/_navigation.ejs') %>
+
+        <div class="tm-contact-img-container">
+            
+        </div>
+
+        <section class="tm-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <% if(flashMessages) { %>
+                            <% if(flashMessages.success) { %>
+                               <div class="alert alert-success">
+                                  <%= flashMessages.success %>
+                               </div>
+                            
+                            <% } else if (flashMessages.error) { %>
+                               <div class="alert alert-danger">
+                                  <%= flashMessages.error %>
+                               </div>
+                            <%}%>
+                         <%}%>
+                        <section>
+                            <h3 class="tm-gold-text tm-form-title">Create</h3>
+
+
+                            <form action="/mynews" method="POST" class="tm-contact-form">                                
+                                <div class="form-group">
+                                    <input type="text" id="contact_name" name="title" class="form-control" placeholder="Title" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <textarea type="text" id="contact_subject" name="description" class="form-control" placeholder="Description"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="contactus" name="role" type="hidden" value="<%=user.role%>">                          
+                                 </div>
+                               
+                            
+                                <button type="submit" class="tm-btn">Create</button>                          
+                            </form>   
+                        </section>
+                        
+                                               
+                 
+
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </section>
+        
+        <%- include('partials/_footer.ejs') %>
+       
+        
+
+
+        <!-- load JS files -->
+        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h --> 
+        <script src="js/bootstrap.min.js"></script>                 <!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->
+        <script>     
+       
+            /* Google map
+            ------------------------------------------------*/
+            var map = '';
+            var center;
+
+            function initialize() {
+                var mapOptions = {
+                    zoom: 16,
+                    center: new google.maps.LatLng(13.758468,100.567481),
+                    scrollwheel: false
+                };
+            
+                map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
+
+                google.maps.event.addDomListener(map, 'idle', function() {
+                  calculateCenter();
+                });
+            
+                google.maps.event.addDomListener(window, 'resize', function() {
+                  map.setCenter(center);
+                });
+            }
+
+            function calculateCenter() {
+                center = map.getCenter();
+            }
+
+            function loadGoogleMap(){
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
+                document.body.appendChild(script);
+            }
+        
+            // DOM is ready
+            $(function() {
+
+                // Google Map
+                loadGoogleMap();
+            });
+
+        </script>             
+
+</body>
+</html>

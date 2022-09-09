@@ -1,0 +1,59 @@
+<div class="tm-header">
+    <div class="container-fluid">
+        <div class="tm-header-inner">
+            <a href="#" class="navbar-brand tm-site-name">Classic</a>
+            
+            <!-- navbar -->
+            <nav class="navbar tm-main-nav">
+
+                <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
+                    &#9776;
+                </button>
+                
+                <div class="collapse navbar-toggleable-sm" id="tmNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item <%= page_name === 'index'&& 'active'%>">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item  <%= page_name === 'about'&& 'active'%>">
+                            <a href="/about" class="nav-link">About</a>
+                        </li>
+                        <% if(!userIN) { %>
+                        <li class="nav-item <%= page_name === 'contact'&& 'active'%>">
+                            <a href="/contact" class="nav-link">Contact</a>
+                        </li>
+                        <%}%>
+                        <% if(userIN) { %>
+                        <li class="nav-item <%= page_name === 'dashboard'&& 'active'%>">
+                            <a href="/users/dashboard" class="nav-link">Dashboard</a>
+                        </li>
+                        <%}%>
+                        <% if(userIN) { %>
+                            <li class="nav-item <%= page_name === 'create'&& 'active'%>" hidden>
+                                <a href="/create" class="nav-link">create</a>
+                            </li>
+                            <%}%>
+                        <% if(!userIN) { %>
+                        <li class="nav-item <%= page_name === 'register'&& 'active'%>">
+                            <a href="/register" class="nav-link">Register</a>
+                        </li>
+                        <%}%>
+                        <% if(!userIN) { %>
+                        <li class="nav-item <%= page_name === 'login'&& 'active'%>">
+                            <a href="/login" class="nav-link">Login</a>
+                        </li>
+                        <%}%>
+                        <% if(userIN) { %>
+                        <li class="nav-item <%= page_name === 'logout'&& 'active'%>">
+                            <a href="/users/logout" class="nav-link">Logout</a>
+                        </li>
+                        <%}%>
+                        
+                    </ul>                        
+                </div>
+                
+            </nav>  
+
+        </div>                                  
+    </div>            
+</div>
