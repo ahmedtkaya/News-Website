@@ -9,6 +9,6 @@ router.route("/about").get(pageControllers.getAboutPage);
 router.route("/login").get(pageControllers.getLoginPage);
 router.route("/register").get(pageControllers.getRegisterPage);
 router.route("/contact").get(pageControllers.getContactPage);
-router.route("/create").get(pageControllers.getCreatePage);
+//router.route("/create").get(pageControllers.getCreatePage);
 
 module.exports = router;

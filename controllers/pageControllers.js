@@ -1,5 +1,6 @@
 const User = require("../models/User");
-
+const Category = require("../models/Category");
+const News = require("../models/News");
 exports.getIndexPage = (req, res) => {
   //değişecek
   res.status(200).render("index", {
@@ -30,10 +31,15 @@ exports.getLoginPage = (req, res) => {
     page_name: "login",
   });
 };
+/*
 exports.getCreatePage = async (req, res) => {
   const user = await User.findOne({ _id: req.session.userID }).populate("news");
+  const categories = await Category.find();
+  const news = await News.find();
   res.status(200).render("create", {
     page_name: "create",
     user,
+    categories,
+    news,
   });
-};
+};*/

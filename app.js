@@ -4,7 +4,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
-
+const categoryRoute = require("./routes/categoryRoute");
 const pageRoute = require("./routes/pageRoute");
 const userRoute = require("./routes/userRoute");
 const newsRoute = require("./routes/newsRoute");
@@ -59,6 +59,7 @@ app.use("*", (req, res, next) => {
 app.use("/", pageRoute);
 app.use("/users", userRoute);
 app.use("/mynews", newsRoute);
+app.use("/categories", categoryRoute);
 
 const port = 3000;
 app.listen(port, () => {

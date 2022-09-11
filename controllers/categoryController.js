@@ -9,6 +9,7 @@ exports.createCategory = async (req, res) => {
     const category = await Category.create(req.body);
     //bu bir simülasyondur ve hatayı yakalamak için try catch yazdık
     res.status(201).redirect("/users/dashboard");
+    req.flash("success", `${category.name} has been created`);
   } catch (error) {
     res.status(400).json({
       status: "fail",

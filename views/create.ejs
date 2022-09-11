@@ -38,6 +38,15 @@
                                 <div class="col-md-12">
                                     <input class="contactus" name="role" type="hidden" value="<%=user.role%>">                          
                                  </div>
+                                 <div class="form-group">
+                                    
+                                        <select class="form-control" name="category">
+                                            <% for (let i=0; i<categories.length;i++) {  %>
+                                            <option value="<%= categories[i].id%>"><%= categories[i].name%></option>
+                                            <%}%>
+                                        </select>
+                                    
+                                </div>
                                
                             
                                 <button type="submit" class="tm-btn">Create</button>                          

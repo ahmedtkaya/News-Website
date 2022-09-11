@@ -17,12 +17,51 @@
                             <h3 class="tm-grey-text"><span style="color: black; font-weight: bold;"><%=user.role%> : </span><%=user.name%></h3>
                         </div>
                         <div class="column margin-t-35">
-                            <a href="/create"  class="btn btn-warning btn-lg"><span> Create A News</span> </a>                           
-                            <button type="button" class="btn btn-success btn-lg"><span> Change Profile İnformations</span></button>
+                            <!--şuraya bir bak gönderemiyorum yeni data-->
+                            <form action="/mynews" method="POST" class="tm-contact-form">                                
+                                <div class="form-group">
+                                    <input type="text" id="contact_name" name="title" class="form-control" placeholder="Title" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <textarea type="text" id="contact_subject" name="description" class="form-control" placeholder="Description"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="contactus" name="role" type="hidden" value="<%=user.role%>">                          
+                                 </div>
+                                 <div class="form-group">
+                                    
+                                        <select class="form-control" name="category">
+                                            <% for (let i=0; i<categories.length;i++) {  %>
+                                            <option value="<%= categories[i].id%>"><%= categories[i].name%></option>
+                                            <%}%>
+                                        </select>
+                                    
+                                </div>
+                               
+                            
+                                <button type="submit" class="btn btn-warning btn-lg">Create</button>                          
+                            </form>  
+                            <% if(flashMessages) { %>
+                                <% if(flashMessages.success) { %>
+                                   <div class="alert alert-success">
+                                      <%= flashMessages.success %>
+                                   </div>
+                                
+                                <% } else if (flashMessages.error) { %>
+                                   <div class="alert alert-danger">
+                                      <%= flashMessages.error %>
+                                   </div>
+                                <%}%>
+                             <%}%>
+                                                      
                         </div>   
                        
             
-                    <hr class="my-4">                       
+                    <hr class="my-4"> 
+                    <div class="tm-blog-post">
+                        <h1 class="tm-gold-text ">MY News</h1>
+                    </div>                      
                         <div class="row tm-margin-t-big">
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <div class="tm-content-box">
@@ -41,6 +80,60 @@
             </div>
         </section>
         <%}%>
+
+        <%if (user.role === 'admin') { %>
+
+            <section class="tm-section">
+                <div class="container">
+                    <div class="row">
+    
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                            <div class="tm-blog-post">
+                                <h1 class="tm-gold-text text-center">Dashboard</h1>
+                                <hr class="my-10">
+                                <h3 class="tm-grey-text"><span style="color: black; font-weight: bold;"><%=user.role%> : </span><%=user.name%></h3>
+                            </div>
+                            <div class="column margin-t-35">
+                                
+                                <form action="/categories" method="POST" class="tm-contact-form">                                
+                                    <div class="form-group">
+                                        <input type="text" id="contact_name" name="name" class="form-control" placeholder="Category" required/>
+                                    </div>                         
+                                <button type="submit" class="btn btn-success btn-lg"><span> Create A Category</span></button>
+                                <% if(flashMessages) { %>
+                                    <% if(flashMessages.success) { %>
+                                       <div class="alert alert-success">
+                                          <%= flashMessages.success %>
+                                       </div>
+                                    
+                                    <% } else if (flashMessages.error) { %>
+                                       <div class="alert alert-danger">
+                                          <%= flashMessages.error %>
+                                       </div>
+                                    <%}%>
+                                 <%}%>
+                            </div>   
+                           
+                
+                        <hr class="my-4">                       
+                            <div class="row tm-margin-t-big">
+                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="tm-content-box">
+                                        <img src="/img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-30 img-fluid">
+                                        <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #1</h4>
+                                        <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
+                                        consequat mauris dapibus id. Donec
+                                        scelerisque porttitor pharetra</p>
+                                        <a href="#" class="tm-btn text-uppercase">Detail</a>    
+                                    </div>  
+    
+                                </div>     
+                            </div> 
+                        </div>
+                    </div> 
+                </div>
+            </section>
+            <%}%>
         <%}%>
         
         <%- include('partials/_footer.ejs') %>

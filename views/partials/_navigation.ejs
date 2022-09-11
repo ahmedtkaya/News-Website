@@ -28,11 +28,7 @@
                             <a href="/users/dashboard" class="nav-link">Dashboard</a>
                         </li>
                         <%}%>
-                        <% if(userIN) { %>
-                            <li class="nav-item <%= page_name === 'create'&& 'active'%>" hidden>
-                                <a href="/create" class="nav-link">create</a>
-                            </li>
-                            <%}%>
+                        
                         <% if(!userIN) { %>
                         <li class="nav-item <%= page_name === 'register'&& 'active'%>">
                             <a href="/register" class="nav-link">Register</a>

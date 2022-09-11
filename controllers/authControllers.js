@@ -1,5 +1,6 @@
 const News = require("../models/News");
 const User = require("../models/User");
+const Category = require("../models/Category");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 
@@ -50,10 +51,13 @@ exports.logoutUser = (req, res) => {
 exports.getDashboardPage = async (req, res) => {
   const user = await User.findOne({ _id: req.session.userID }).populate("news");
   const writercontents = await News.find({ user: req.session.userID });
-
+  const categories = await Category.find();
+  const users = await User.find();
   res.status(200).render("dashboard", {
     user,
     writercontents,
     page_name: "dashboard",
+    categories,
+    users,
   });
 };
