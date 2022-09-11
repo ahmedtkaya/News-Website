@@ -7,14 +7,14 @@ exports.createNews = async (req, res) => {
     const creatednews = await News.create({
       title: req.body.title,
       description: req.body.description,
-      category: req.body.category,
       user: req.session.userID,
+      category: req.body.category,
     });
-    //users/dashboard yap
-    res.status(200).redirect("/users/dashboard");
-    req.flash("success", `${creatednews.name} has been created`);
+    //bu bir simülasyondur ve hatayı yakalamak için try catch yazdık
+    req.flash("success", `${creatednews.title} has been created successfully`);
+    res.status(201).redirect("/users/dashboard");
   } catch (error) {
-    req.flash("error", `Something went wrong`);
+    req.flash("error", `${error}`);
     res.status(404).redirect("/users/dashboard");
   }
 };

@@ -20,11 +20,11 @@
                             <!--şuraya bir bak gönderemiyorum yeni data-->
                             <form action="/mynews" method="POST" class="tm-contact-form">                                
                                 <div class="form-group">
-                                    <input type="text" id="contact_name" name="title" class="form-control" placeholder="Title" />
+                                    <input type="text"  name="title" class="form-control" placeholder="Title" />
                                 </div>
                                 
                                 <div class="form-group">
-                                    <textarea type="text" id="contact_subject" name="description" class="form-control" placeholder="Description"></textarea>
+                                    <textarea type="text"  name="description" class="form-control" placeholder="Description"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <input class="contactus" name="role" type="hidden" value="<%=user.role%>">                          
@@ -63,17 +63,17 @@
                         <h1 class="tm-gold-text ">MY News</h1>
                     </div>                      
                         <div class="row tm-margin-t-big">
+                            <% for (let i=0;i < writercontents.length;i++) { %>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <div class="tm-content-box">
                                     <img src="/img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-30 img-fluid">
-                                    <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #1</h4>
-                                    <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                                    consequat mauris dapibus id. Donec
-                                    scelerisque porttitor pharetra</p>
+                                    <h4 class="tm-margin-b-20 tm-gold-text"><%=writercontents[i].title%></h4>
+                                    <p class="tm-margin-b-20"><%= writercontents[i].description %></p>
                                     <a href="#" class="tm-btn text-uppercase">Detail</a>    
                                 </div>  
 
-                            </div>     
+                            </div> 
+                            <%}%>    
                         </div> 
                     </div>
                 </div> 
@@ -87,9 +87,9 @@
                 <div class="container">
                     <div class="row">
     
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                        <div class="">
                             <div class="tm-blog-post">
-                                <h1 class="tm-gold-text text-center">Dashboard</h1>
+                                <h1 class="tm-gold-text text-center ">Dashboard</h1>
                                 <hr class="my-10">
                                 <h3 class="tm-grey-text"><span style="color: black; font-weight: bold;"><%=user.role%> : </span><%=user.name%></h3>
                             </div>
@@ -116,19 +116,35 @@
                            
                 
                         <hr class="my-4">                       
-                            <div class="row tm-margin-t-big">
-                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                    <div class="tm-content-box">
-                                        <img src="/img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-30 img-fluid">
-                                        <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #1</h4>
-                                        <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                                        consequat mauris dapibus id. Donec
-                                        scelerisque porttitor pharetra</p>
-                                        <a href="#" class="tm-btn text-uppercase">Detail</a>    
-                                    </div>  
-    
-                                </div>     
-                            </div> 
+                        <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NAME</th>
+                                <th scope="col">EMAİL</th>
+                                <th scope="col">CONTENTS</th>
+                                <th scope="col">ROLE</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i=0; i < users.length;i++) { %>
+                              <tr>
+                                <th scope="row"><%= users[i]._id%></th>
+                                <td><%= users[i].name%></td>
+                                <td><%= users[i].email%></td>
+                                
+                                <td><%=usercontent%></td>
+                                
+                                <td><%= users[i].role%></td>
+                                <td><a href="#" onclick="return confirm('Are You Sure?')" class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a></td>
+
+                              </tr>
+                             <%}%>
+                            </tbody>
+                          </table>
+                          
+                          
                         </div>
                     </div> 
                 </div>

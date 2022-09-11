@@ -53,11 +53,13 @@ exports.getDashboardPage = async (req, res) => {
   const writercontents = await News.find({ user: req.session.userID });
   const categories = await Category.find();
   const users = await User.find();
+  const usercontent = await User.find().countDocuments().populate("news");
   res.status(200).render("dashboard", {
     user,
     writercontents,
     page_name: "dashboard",
     categories,
     users,
+    usercontent,
   });
 };

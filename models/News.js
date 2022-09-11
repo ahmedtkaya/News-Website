@@ -34,7 +34,7 @@ const NewsSchema = new Schema({
 });
 //bununla url kısmında beraber id yerine name gözükecek
 NewsSchema.pre("validate", function (next) {
-  this.slug = slugify(this.name, {
+  this.slug = slugify(this.title, {
     // burada slug ile name'i eşitliyor
     lower: true,
     strict: true, //name'de gereksiz karakterleri siler (- :) gibi
