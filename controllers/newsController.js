@@ -18,3 +18,17 @@ exports.createNews = async (req, res) => {
     res.status(404).redirect("/users/dashboard");
   }
 };
+
+exports.getNews = async (req, res) => {
+  const news = await News.findById({ _id: req.params.id }).populate("user");
+  const writername = await User.findById(req.session.userID);
+  const categories = await Category.find();
+  const threenews = await News.find().sort("-createdAt").limit(3);
+  res.status(200).render("contentnews", {
+    page_name: "contentnews",
+    news,
+    writername,
+    categories,
+    threenews,
+  });
+};

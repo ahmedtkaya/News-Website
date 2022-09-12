@@ -40,7 +40,8 @@
                                 </div>
                                
                             
-                                <button type="submit" class="btn btn-warning btn-lg">Create</button>                          
+                                <button type="submit" class="btn btn-warning btn-lg">Create</button>       
+                                                   
                             </form>  
                             <% if(flashMessages) { %>
                                 <% if(flashMessages.success) { %>
@@ -69,7 +70,8 @@
                                     <img src="/img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-30 img-fluid">
                                     <h4 class="tm-margin-b-20 tm-gold-text"><%=writercontents[i].title%></h4>
                                     <p class="tm-margin-b-20"><%= writercontents[i].description %></p>
-                                    <a href="#" class="tm-btn text-uppercase">Detail</a>    
+                                    <a href="#" class="btn btn-danger btn-lg">DELETE</a>    
+                                    <a href="#" class="btn btn-primary btn-lg">EDIT</a>  
                                 </div>  
 
                             </div> 

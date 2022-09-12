@@ -22,8 +22,8 @@
                         <div class="tm-content-box">
                             <img src="/img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
                             <h4 class="tm-margin-b-20 tm-gold-text"><%= allnews[i].title %></h4>
-                            <p class="tm-margin-b-20"><%= allnews[i].description.substring(0, 100)+"..."%> %></p>
-                            <a href="#" class="tm-btn text-uppercase">Detail</a>    
+                            <p class="tm-margin-b-20"><%= allnews[i].description.substring(0, 100)+"..."%></p>
+                            <a href="/mynews/<%= allnews[i]._id%>" class="tm-btn text-uppercase">Detail</a>    
                         </div>  
 
                     </div>
@@ -44,10 +44,10 @@
                             <p class="tm-margin-b-30"><%= lastnews[i].name%></p>
                             <img src="/img/tm-img-660x330-1.jpg" alt="Image" class="tm-margin-b-40 img-fluid">
                             <p>
-                                <%= lastnews[i].description%>
+                                <%= lastnews[i].description.substring(0, 550)+"..."%>
                             </p>
                             </p>
-                            <a href="#" class="tm-btn text-uppercase">Read More</a>
+                            <a href="/mynews/<%= allnews[i]._id%>" class="tm-btn text-uppercase">Read More</a>
 
                         </div>
                         <%}%>
@@ -81,7 +81,7 @@
                                 <div class="row tm-2-rows-md-down-1 tm-margin-t-mid">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h3 class="tm-gold-text tm-title tm-margin-b-30">Related Posts</h3>
-                                        <% for ( let i=0; i<relatednews.length;i++) { %>
+                                        <% for ( let i=0; i < relatednews.length;i++) { %>
                                         <div class="media tm-related-post">
                                           <div class="media-left media-middle">
                                             <a href="#">
@@ -90,7 +90,7 @@
                                           </div>
                                           <div class="media-body">
                                             <a href="#"><h4 class="media-heading tm-gold-text tm-margin-b-15"><%=relatednews[i].title%></h4></a>
-                                            <p class="tm-small-font tm-media-description"><%= relatednews[i].description %></p>
+                                            <p class="tm-small-font tm-media-description"><%= relatednews[i].description.substring(0, 100)+"..."%> </p>
                                           </div>
                                         </div>
                                         <%}%>
